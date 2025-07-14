@@ -73,7 +73,7 @@ function Get-NetAdapterLinux {
             }
         }
         $pathName = Join-Path (Join-Path "/sys/class/net" $adapterName) "speed"
-        if (Test-Path $pathName) { $Speed= Get-Content -Path $pathName }
+        if (Test-Path $pathName) { $Speed= Get-Content -Path $pathName -EA Silentlycontinue }
 
         $adapter = New-Object -Type PSObject -Property ([ordered] @{
                 Name          = $adapterName
